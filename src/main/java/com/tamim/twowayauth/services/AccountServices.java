@@ -1,5 +1,6 @@
 package com.tamim.twowayauth.services;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tamim.twowayauth.entities.Account;
 import com.tamim.twowayauth.entities.Encoded;
 import com.tamim.twowayauth.repositories.AccountRepository;
@@ -17,7 +18,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class AccountServices {
-    private static final String SECRET_KEY = "mysecretkey-IQDX";
+    private static final String SECRET_KEY = "mysecretkey-1234";
 
     private final AccountRepository accountRepository;
     private final EncodedRepository encodedRepository;
@@ -45,8 +46,9 @@ public class AccountServices {
     }
 
     private String encodeAccount(Account account) {
+        ObjectMapper mapper = new ObjectMapper();
         try {
-            String accountData = account.getAccountId() + ":" + account.getName() + ":" + account.getEmail();
+            String accountData = mapper.writeValueAsString(account);
 
             SecretKeySpec secretKey = new SecretKeySpec(Arrays.copyOf(SECRET_KEY.getBytes(StandardCharsets.UTF_8), 16), "AES");
             Cipher cipher = Cipher.getInstance("AES");
@@ -60,11 +62,11 @@ public class AccountServices {
         return null;
     }
 
-    public Account getDecodedVersion(String encodedString) {
+    public String getDecodedVersion(String encodedString) {
         return decodeAccount(encodedString);
     }
 
-    private Account decodeAccount(String encodedString) {
+    private String decodeAccount(String encodedString) {
         try {
             SecretKeySpec secretKey = new SecretKeySpec(SECRET_KEY.getBytes(), "AES");
             Cipher cipher = Cipher.getInstance("AES");
@@ -72,15 +74,9 @@ public class AccountServices {
             byte[] decodedBytes = cipher.doFinal(Base64.getDecoder().decode(encodedString));
 
             String accountData = new String(decodedBytes);
-            String[] accountFields = accountData.split(":");
 
-            if (accountFields.length == 3) {
-                String accountId = accountFields[0];
-                String name = accountFields[1];
-                String email = accountFields[2];
+            return accountData;
 
-                return new Account(accountId, name, email);
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }

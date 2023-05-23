@@ -27,7 +27,7 @@ public class AccountController {
     }
 
     @GetMapping(value = "/get-decoded-version", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Account getDecodedVersion(@RequestParam String encodedString) {
+    public String getDecodedVersion(@RequestParam String encodedString) {
         return accountServices.getDecodedVersion(encodedString);
     }
 }
