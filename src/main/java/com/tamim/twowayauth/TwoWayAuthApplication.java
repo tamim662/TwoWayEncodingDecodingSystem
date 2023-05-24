@@ -1,7 +1,5 @@
 package com.tamim.twowayauth;
 
-import com.tamim.twowayauth.repositories.AccountRepository;
-import com.tamim.twowayauth.services.AccountServices;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
