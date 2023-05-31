@@ -1,4 +1,4 @@
-package com.tamim.twowayauth.entities;
+package com.tamim.twowayencrytion.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

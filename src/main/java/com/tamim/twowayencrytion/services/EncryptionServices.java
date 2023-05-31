@@ -1,4 +1,4 @@
-package com.tamim.twowayauth.services;
+package com.tamim.twowayencrytion.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.util.Arrays;
 import java.util.Base64;
 
@@ -13,8 +14,6 @@ import java.util.Base64;
 @RequiredArgsConstructor
 public class EncryptionServices {
     private static final String SECRET_KEY = "mysecretkey-1234";
-
-
 
     public String decode(String encodedString) {
         System.out.println("Time before decoding: " + System.currentTimeMillis());

@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.tamim</groupId>
-    <artifactId>TwoWayAuth</artifactId>
+    <artifactId>TwoWayEncryption</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>TwoWayAuth</name>
     <description>TwoWayAuth</description>

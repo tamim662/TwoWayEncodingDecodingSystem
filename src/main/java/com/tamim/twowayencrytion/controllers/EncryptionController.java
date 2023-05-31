@@ -1,6 +1,6 @@
-package com.tamim.twowayauth.controllers;
+package com.tamim.twowayencrytion.controllers;
 
-import com.tamim.twowayauth.services.EncryptionServices;
+import com.tamim.twowayencrytion.services.EncryptionServices;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;

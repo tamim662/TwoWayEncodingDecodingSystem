@@ -1,13 +1,13 @@
-package com.tamim.twowayauth;
+package com.tamim.twowayencrytion;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TwoWayAuthApplication {
+public class TwoWayAuthEncryption {
 
     public static void main(String[] args) {
-        SpringApplication.run(TwoWayAuthApplication.class, args);
+        SpringApplication.run(TwoWayAuthEncryption.class, args);
     }
 
 }
